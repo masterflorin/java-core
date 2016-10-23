@@ -51,8 +51,8 @@ More details about istSOS itself check -> [documentation](http://istsos.org/en/l
 Important to keep in mind that istSOS Java Core makes use of event listeners, therefore whenever you use a method
 whether on a e.g. `Service` or `Server` instance you have to use a `IstSOSListener` as a parameter for all methods.
 
-Whenever you develop keep in mind that first the object's configuration must be loaded, thus you can see the use of `IstSOSListener`, 
-in order to keep the reference of the object.
+Whenever you develop keep in mind that first the object's configuration must be loaded, thus you can see the use of `IstSOSListener`, in order to keep the reference of the object. What you need to realize is that istSOS provides `JSON` objects which are turned into `Java` objects thanks to this library.
+
 
 ## Short note about the structure
 

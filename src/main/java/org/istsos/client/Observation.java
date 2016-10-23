@@ -9,7 +9,7 @@ import org.istsos.client.observation.Result;
 
 /**
  * Class for storing observation information such as samplingTime, name,
- * procedure, result. Capable of both converting to/from JSON.
+ * procedure, result.
  *
  */
 public class Observation implements IstSOSObject<Observation>{

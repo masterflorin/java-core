@@ -15,7 +15,7 @@ import org.istsos.client.procedure.Classification;
 import org.istsos.client.procedure.Location;
 
 /**
- * Procedure class. Supports conversion to/from JSON.
+ * Procedure class.
  *
  */
 public class Procedure implements IstSOSObject<Procedure> {

@@ -62,7 +62,7 @@ Mentors from istSOS: Mirko Cardoso, Milan Antonovic.
 
 ## Release history
 
-* Last updated: 22.08.2016
+* Last updated: 23.10.2016
 * Version: 0.1
 
 ## Useful links

@@ -14,7 +14,7 @@ import com.google.gson.JsonParser;
 
 /**
  * Main class for initializing IstSOS configuration and Server initialization. 
- * Implements HTTP asynchronous requests to IstSOS environment.
+ * Contains implementation of HTTP asynchronous requests to IstSOS environment.
  *
  */
 public class IstSOS{
@@ -26,7 +26,10 @@ public class IstSOS{
 	private static AsyncHttpClient asyncHttpClient = new DefaultAsyncHttpClient();
 		
     private IstSOS() { }
-    
+    /**
+     * Retrieve IstSOS instance
+     * @return instance as IstSOS object
+     */
     public static IstSOS getInstance() {
         if (instance == null ) {
             synchronized (IstSOS.class) {
@@ -37,30 +40,59 @@ public class IstSOS{
         }
         return instance;
     }
-	
+	/**
+	 * Add server object to the collection of servers
+	 * @param name as String
+	 * @param server as Server instance
+	 * @return server added to the collection
+	 */
     public Server addServer(String name, Server server) {
         this.servers.put(name, server);
     	return server;
     }
-	
+	/**
+	 * Initialize a Server with name and url.
+	 * @param name as String
+	 * @param url as String
+	 * @return initialized Server instance
+	 */
     public Server initServer(String name, String url) {
         return this.addServer(name, new Server(name, url));
     }
-	
+	/**
+	 * Initialize a Server with all parameters.
+	 * @param name as String
+	 * @param url as String
+	 * @param user as String
+	 * @param password as String
+	 * @return initialized Server instance
+	 */
     public Server initServer(String name, String url, String user, String password) {
     	return this.addServer(name, new Server(name, url, user, password));
     }
-    
+    /**
+     * Retrieve Server from the server collection
+     * @param name as String
+     * @return Server instance
+     */
     public Server getServer(String name){
     	return this.servers.get(name);
     }
-    
+    /**
+     * Retrieve the collection of servers
+     * @return Server collection
+     */
     public Collection<Server> getServers(){
     	return this.servers.values();
     }
 
 
-
+    /**
+     * Execute GET request to the istSOS platform.
+     * @param url as String
+     * @param callback as IstSOSListener
+     * @param realm as ArrayList<String>
+     */
     protected static void executeGet(String url, final IstSOSListener callback, ArrayList<String> realm){
     	
     	BoundRequestBuilder builder = asyncHttpClient.prepareGet(url);
@@ -103,8 +135,13 @@ public class IstSOS{
 		});
     	
     }
-    
-    //post request
+    /**
+     * Execute POST request to the istSOS platform.
+     * @param url as String
+     * @param data as String
+     * @param callback as IstSOSListener
+     * @param realm as ArrayList<String>
+     */
     protected static void executePost(String url, String data, final IstSOSListener callback, ArrayList<String> realm) {
     	
     	BoundRequestBuilder builder = asyncHttpClient.preparePost(url).setBody(data);
@@ -149,8 +186,13 @@ public class IstSOS{
     	
     	
     }
-    
-    //put request
+    /**
+     * Execute PUT request to the istSOS platform.
+     * @param url as String
+     * @param data as String
+     * @param callback as IstSOSListener
+     * @param realm as ArrayList<String>
+     */
     protected static void executePut(String url, String data, final IstSOSListener callback, ArrayList<String> realm) {
     	
     	BoundRequestBuilder builder = asyncHttpClient.preparePut(url).setBody(data);
@@ -195,7 +237,13 @@ public class IstSOS{
    
 
     }
-    
+    /**
+     * Execute DELETE request to istSOS platform.
+     * @param url as String
+     * @param data as String
+     * @param callback as IstSOSListener
+     * @param realm as ArrayList<String>
+     */
     protected static void executeDelete(String url, String data, final IstSOSListener callback, ArrayList<String> realm){
     	
    	BoundRequestBuilder builder = asyncHttpClient.prepareDelete(url).setBody(data);

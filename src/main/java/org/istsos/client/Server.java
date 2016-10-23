@@ -7,10 +7,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 /**
- * Server class.
- * <p>
- * Enables services for IstSOS environment.
- *
+ * Allows storage and retrieval of services.
+ * Can hold data related to name, url, user, password.
  */
 public class Server{
 	
@@ -23,12 +21,24 @@ public class Server{
 	
 
 	private List<Service> services = new ArrayList<>();
-	
+	/**
+	 * Initialize a Server instance with name and url.
+	 * @param name as String
+	 * @param url as String
+	 */
 	public Server(String name, String url) {
 		this.name = name;
 		this.url = url;
 	}
 	
+	/**
+	 * Initialize a Server instance with all parameters.
+	 * Authentication will be set to true.
+	 * @param serverName as String
+	 * @param url as String
+	 * @param user as String
+	 * @param password as String
+	 */
 	public Server(String serverName, String url, String user, String password) {
 		this.name = serverName;
 		this.url = url;
@@ -37,7 +47,11 @@ public class Server{
 		autheticationRequired = true;
 	}
 
-
+	/**
+	 * Retrieve a service from the list based on its name
+	 * @param serviceName as String
+	 * @return Service object where found, else returns null
+	 */
 	public Service getService(String serviceName){
 
 		for(Service service : this.services){
@@ -48,35 +62,64 @@ public class Server{
 
 		return null;
 	}
-	
+	/**
+	 * Retrieve server name
+	 * @return name as String
+	 */
 	public String getServerName(){
 		return this.name;
 	}
-
+	/**
+	 * Retrieve server url
+	 * @return url as String
+	 */
 	public String getServerUrl(){
 		return this.url;
 	}
-	
+	/**
+	 * Retrieve username
+	 * @return username as String
+	 */
 	public String getUser() {
 		return user;
 	}
-
+	/**
+	 * Retrieve password
+	 * @return password as String
+	 */
 	public String getPassword() {
 		return password;
 	}
-
+	/**
+	 * Set new username
+	 * @param user as String
+	 */
 	public void setUser(String user) {
 		this.user = user;
 	}
-
+	/**
+	 * Set new password
+	 * @param password as String
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	
+	/**
+	 * 	Loads all available services from the server
+	 */
 	public void loadServices(){
 		this.loadServices(null);
 	}
 	
+	/**
+	 * Loads all available services from the server.
+	 * Note: The IstSOSListener callback modifier is set to final.
+	 * Every usage of this method will result in a new request to retrieve
+	 * services from istSOS.
+	 * 
+	 * @param callback
+	 */
 	public void loadServices(final IstSOSListener callback){
 		services.clear();
 		
@@ -121,6 +164,10 @@ public class Server{
 		}, this.getRealm());
 	}
 	
+	/**
+	 * Retrieve list of services
+	 * @return List of Service objects
+	 */
 	public List<Service> getServices() {
 		return this.services;
 	}

@@ -11,8 +11,8 @@ import java.util.*;
  * Handles all requests for IstSOS data instances.
  * <p>
  * Enables capabilities for working with offerings, procedures, virtual procedures,
- * observed properties, units of measure, data qualities, and observations.
- *
+ * observed properties, unit of measure, data qualities, and observations. Holds
+ * data classes in lists.
  */
 public class Service implements IstSOSObject<Service>{
 
@@ -32,7 +32,10 @@ public class Service implements IstSOSObject<Service>{
 	private ArrayList<Observation> observations = new ArrayList<>();
 	
 	public Service() {};
-
+	/**
+	 * Initialize Service on the given Server.
+	 * @param server {@link Server}
+	 */
 	public Service(Server server) {
 		this.server = server;
 	}
@@ -40,7 +43,7 @@ public class Service implements IstSOSObject<Service>{
 	public String getName() {
 		return name;
 	}
-
+	
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -48,19 +51,24 @@ public class Service implements IstSOSObject<Service>{
 	public String getConfigPath() {
 		return configPath;
 	}
-
+	/**
+	 * Set new configuration path
+	 * @param configPath as String
+	 */
 	public void setConfigPath(String configPath) {
 		this.configPath = configPath;
 	}
-
+	/**
+	 * 
+	 * @param {@link Server} server 
+	 */
 	public void setServer(Server server){
 		this.server = server;
 	}
-	
 	/**
-	 * 
-	 * @param procedureName
-	 * @return Procedure
+	 * Retrieve a procedure based on its name.
+	 * @param procedureName as String
+	 * @return {@link Procedure} instance if found, else returns null.
 	 */
 	public Procedure getProcedure(String procedureName){
 
@@ -73,11 +81,10 @@ public class Service implements IstSOSObject<Service>{
         return null;
 
 	}
-	
 	/**
-	 * 
-	 * @param offeringName
-	 * @return Offering
+	 * Retrieve an offering based on its name.
+	 * @param offeringName as String
+	 * @return {@link Offering} instance if found, else returns null.
 	 */
 	public Offering getOffering(String offeringName){
 		
@@ -90,11 +97,10 @@ public class Service implements IstSOSObject<Service>{
 		return null;
 		
 	}
-	
 	/**
-	 * 
-	 * @param defUrn
-	 * @return ObservedProperty
+	 * Retrieve an observedProperty based on its definition URN.
+	 * @param defUrn as String
+	 * @return {@link ObservedProperty} instance if found, else returns null.
 	 */
 	public ObservedProperty getObservedProperty(String defUrn){
 		
@@ -108,11 +114,10 @@ public class Service implements IstSOSObject<Service>{
 		return null;
 		
 	}
-	
 	/**
-	 * 
-	 * @param code
-	 * @return DataQuality
+	 * Retrieve a data quality based on its code.
+	 * @param code as int
+	 * @return {@link DataQuality} instance if found, else returns null.
 	 */
 	public DataQuality getDataQuality(int code){
 		
@@ -124,11 +129,10 @@ public class Service implements IstSOSObject<Service>{
 		
 		return null;
 	}
-	
 	/**
-	 * 
-	 * @param procedureName
-	 * @return VirtualProcedure
+	 * Retrieve a virtual procedure based on its name.
+	 * @param procedureName as String
+	 * @return {@link VirtualProcedure} instance if found, else returns null.
 	 */
 	public VirtualProcedure getVirtualProcedure(String procedureName){
 		
@@ -140,11 +144,10 @@ public class Service implements IstSOSObject<Service>{
 		
 		return null;
 	}
-	
 	/**
-	 * 
-	 * @param uomName
-	 * @return UnitOfMeasure
+	 * Retrieve unit of measure based on its name.
+	 * @param uomName as String
+	 * @return {@link UnitOfMeasure} instance if found, else returns null.
 	 */
 	public UnitOfMeasure getUom(String uomName){
 		
@@ -166,7 +169,7 @@ public class Service implements IstSOSObject<Service>{
 	}
 
 	/**
-	 * Load connection to Database
+	 * Opens new connection to the Database.
 	 * @param callback
 	 */
 	public void loadDatabase(final IstSOSListener callback){
@@ -209,19 +212,17 @@ public class Service implements IstSOSObject<Service>{
 			}
 		}, this.server.getRealm());
 	}
-	
 	/**
 	 * Default method for testing database connection
-	 * @param databaseConnection
+	 * @param database as {@link DatabaseConnection}
 	 */
 	public void validateDatabase(DatabaseConnection databaseConnection) {
 		this.validateDatabase(databaseConnection, null);
 	}
-	
 	/**
-	 * Test database connection
-	 * @param database
-	 * @param callback
+	 * Validate the database connection.
+	 * @param database as {@link DatabaseConnection}
+	 * @param callback as IstSOSListener
 	 */
 	public void validateDatabase(DatabaseConnection database, final IstSOSListener callback){
 		
@@ -267,18 +268,16 @@ public class Service implements IstSOSObject<Service>{
 			}
 		}, this.server.getRealm());
 	}
-			
-	
 	/**
 	 * Default method for loading service provider
 	 */
 	public void loadProvider(){
 		this.loadProvider(null);
 	}
-
 	/**
-	 * Load service provider
-	 * @param callback
+	 * Retrieve service provider from the Service.
+	 * 
+	 * @param callback as IstSOSListener
 	 */
 	public void loadProvider(final IstSOSListener callback){
 
@@ -320,7 +319,6 @@ public class Service implements IstSOSObject<Service>{
 			}
 		}, this.server.getRealm());
 	}
-	
 	/**
 	 * Default method for updating service provider
 	 * @param provider
@@ -328,11 +326,10 @@ public class Service implements IstSOSObject<Service>{
 	public void updateProvider(Provider provider){
 		this.updateProvider(provider, null);
 	}
-	
 	/**
-	 * Update service provider
-	 * @param provider
-	 * @param callback
+	 * Update service provider based on a Provider instance.
+	 * @param provider as {@link Provider}
+	 * @param callback as IstSOSListener
 	 */
 	public void updateProvider(Provider provider, final IstSOSListener callback){
 		
@@ -379,32 +376,30 @@ public class Service implements IstSOSObject<Service>{
 		}, this.server.getRealm());
 		
 	}
-	
-	
 	/**
-	 * Default method for retrieving an observation object by specifying a single procedure and observed property
-	 * as well ass the interval of time by specifying the begin and end positions.
-	 * @param offering
-	 * @param procedure
-	 * @param defUrn
-	 * @param beginPosition
-	 * @param endPosition
+	 * Default method for retrieving an observation object by specifying an offering, a single procedure, a observed property, as well
+	 * as the time interval.
+	 * @param offering as {@link Offering}
+	 * @param procedure as {@link Procedure}
+	 * @param defUrn as {@link ObservedProperty}
+	 * @param beginPosition as {@link Date}
+	 * @param endPosition as {@link Date}
 	 */
 	public void getObservation(Offering offering, Procedure procedure, ObservedProperty defUrn, 
 			Date beginPosition, Date endPosition){
 		this.getObervation(offering, procedure, defUrn, beginPosition, endPosition, null);
 	}
-
 	/**
-	 * Retrieve an observation object by specifying a single procedure and an observed property, as well
-	 * as the interval of time by specifying the begin and end positions.
-	 * 
-	 * @param offering
-	 * @param procedure
-	 * @param defUrn
-	 * @param beginPosition
-	 * @param endPosition
-	 * @param callback
+	 * Retrieve an observation object by specifying an offering, a single procedure, a observed property, as well
+	 * as the time interval.
+	 * <p>
+	 * Note: Date objects will be formatted according to the specs used by istSOS, "yyyy-MM-dd'T'HH:mm:ssXX".
+	 * @param offering as {@link Offering}
+	 * @param procedure as {@link Procedure}
+	 * @param defUrn as {@link ObservedProperty}
+	 * @param beginPosition as {@link Date}
+	 * @param endPosition as {@link Date}
+	 * @param callback as {@link IstSOSListener}
 	 */
 	public void getObervation(Offering offering, Procedure procedure, ObservedProperty defUrn, 
 			Date beginPosition, Date endPosition, final IstSOSListener callback){
@@ -452,32 +447,30 @@ public class Service implements IstSOSObject<Service>{
 		}, this.server.getRealm());
 		
 	}
-	
 	/**
-	 * Default method for loading Observation based by specifying multiple procedures and 
-	 * observed properties
-	 * as well as the interval of time by specifying the begin and end positions.
-	 * 
-	 * @param offering
-	 * @param procedure
-	 * @param defUrn
-	 * @param beginPosition
-	 * @param endPosition
+	 * Default method for loading Observation based by specifying multiple procedures, 
+	 * multiple observed properties, an offering, as well as the interval of time.
+	 * Note: Date objects will be formatted according to the specs used by istSOS, "yyyy-MM-dd'T'HH:mm:ssXX".
+	 * @param offering as {@link Offering}
+	 * @param procedure as {@link List}<{@link Procedure}>
+	 * @param defUrn as {@link List}<{@link ObservedProperty}>
+	 * @param beginPosition as {@link Date}
+	 * @param endPosition as {@link Date}
 	 */
 	public void getObservation(Offering offering, List<Procedure> procedure, 
 					List<ObservedProperty> defUrn, Date beginPosition, Date endPosition){
 		this.getObervation(offering, procedure, defUrn, beginPosition, endPosition, null);
 	}
-	
 	/**
-	 * Loads Observations by doing a request based on multiple procedures and observed properties
-	 * 
-	 * @param offering
-	 * @param procedure
-	 * @param defUrn
-	 * @param beginPosition
-	 * @param endPosition
-	 * @param callback
+	 * Loads Observations by doing a request based on multiple procedures and observed properties.
+	 * <p>
+	 * Note: Date objects will be formatted according to the specs used by istSOS, "yyyy-MM-dd'T'HH:mm:ssXX".
+	 * @param offering as {@link Offering}
+	 * @param procedure as {@link List}<{@link Procedure}>
+	 * @param defUrn as {@link List}<{@link ObservedProperty}>
+	 * @param beginPosition as {@link Date}
+	 * @param endPosition as {@link Date}
+	 * @param callback as {@link IstSOSListener}
 	 */
 	public void getObervation(Offering offering, List<Procedure> procedure, 
 					List<ObservedProperty> defUrn, Date beginPosition, Date endPosition, final IstSOSListener callback){
@@ -541,31 +534,25 @@ public class Service implements IstSOSObject<Service>{
 		}, this.server.getRealm());
 		
 	}
-	
 	/**
-	 * Retrieve a list of Observations as Java object
-	 * @return An ArrayList with Observation instances
+	 * Retrieve a list of Observations
+	 * @return List of Observations
 	 */
 	public ArrayList<Observation> getObservations() {
 		return observations;
 	}
-	
-
 	/**
 	 * Default method for describing sensor properties based on procedure name
-	 * @param procedureName
+	 * @param procedureName as String
 	 */
 	public void describeSensor(String procedureName){
 		this.describeSensor(procedureName, null);
 	}
-	
-
 	/**
-	 * Describe sensor properties by specifying procedure name, it returns a
-	 * procedure object from service.
+	 * Describe sensor properties by specifying procedure name.
 	 * 
-	 * @param procedureName
-	 * @param callback
+	 * @param procedureName as String
+	 * @param callback as IstSOSListener
 	 */
 	public void describeSensor(String procedureName, final IstSOSListener callback){
 		
@@ -600,7 +587,6 @@ public class Service implements IstSOSObject<Service>{
 			}
 		}, this.server.getRealm());
 	}
-	
 	/**
 	 * Default method for registering a sensor
 	 * @param procedure
@@ -608,11 +594,10 @@ public class Service implements IstSOSObject<Service>{
 	public void registerSensor(Procedure procedure) {
 		this.registerSensor(procedure, null);
 	}
-	
 	/**
-	 * Registers new sensor by executing a POST request to service.
-	 * @param procedure
-	 * @param callback
+	 * Registers new sensor on the service.
+	 * @param procedure as Procedure
+	 * @param callback as IstSOSListener
 	 */
 	public void registerSensor(Procedure procedure, final IstSOSListener callback){
 		
@@ -651,24 +636,19 @@ public class Service implements IstSOSObject<Service>{
 		}, this.server.getRealm());
 		
 	}
-
 	/**
 	 * Default method for inserting observation.
-	 * Handles insert observation, executes a POST request using an
-	 * observation and procedure.
-	 * @param procedure
-	 * @param observation
+	 * @param procedure {@link Procedure}
+	 * @param observation {@link Observation}
 	 */
 	public void insertObservation(Procedure procedure, Observation observation){
 		this.insertObservation(procedure, observation, null);
 	}
-	
 	/**
-	 * Handles insert observation, executes a POST request using an
-	 * observation and procedure.
-	 * @param procedure
-	 * @param observation
-	 * @param callback
+	 * Insert Observation to service.
+	 * @param procedure {@link Procedure}
+	 * @param observation {@link Observation}
+	 * @param callback {@link IstSOSListener}
 	 */
 	public void insertObservation(Procedure procedure, Observation observation, final IstSOSListener callback){
 		
@@ -706,18 +686,15 @@ public class Service implements IstSOSObject<Service>{
 		}, this.server.getRealm());
 		
 	}
-
-	  
 	/**
 	 * Default method for loading Status
 	 */
 	public void loadStatus() {
 		this.loadStatus(null);
 	}
-	
 	/**
-	 * Load Status
-	 * @param callback
+	 * Load status of the service.
+	 * @param callback IstSOSListener
 	 */
 	public void loadStatus(final IstSOSListener callback){
 		
@@ -761,22 +738,17 @@ public class Service implements IstSOSObject<Service>{
 			}
 		}, this.server.getRealm());
 	}
-	
-	
 	/**
-	 * Load existing data qualities from service. Executes a get request
-	 * in order to retrieve a list of available data qualities. 
+	 * Load existing data qualities from service. 
 	 * Default method used without parameter.
 	 */
 	public void loadDataQualities(){
 		this.loadDataQualities(null);
 	}
-	
 	/**
-	 * Load existing data qualities from service. Executes a get request
-	 * in order to retrieve a list of available data qualities.
+	 * Load existing data qualities from service. 
 	 * 
-	 * @param callback
+	 * @param callback IstSOSListener
 	 */
 	public void loadDataQualities(final IstSOSListener callback){
 		
@@ -818,15 +790,13 @@ public class Service implements IstSOSObject<Service>{
 		}, this.server.getRealm());
 		
 	}
-	
 	/**
 	 * Retrieve data qualities
-	 * @return a an ArrayList of data qualities with data quality object
+	 * @return List of data qualities
 	 */
 	public ArrayList<DataQuality> getDataQualities() {
 		return dataQualities;
 	}
-	
 	/**
 	 * Default method for registering a data quality to selected service.
 	 * @param dataQuality
@@ -834,11 +804,10 @@ public class Service implements IstSOSObject<Service>{
 	public void registerDataQuality(DataQuality dataQuality){
 		this.registerDataQuality(dataQuality, null);
 	}
-	
 	/**
-	 * Register data quality object to list of data qualities on service.
-	 * @param dataQuality 
-	 * @param callback
+	 * Register new data quality to the service.
+	 * @param dataQuality {@link DataQuality}
+	 * @param callback {@link IstSOSListener}
 	 */
 	public void registerDataQuality(DataQuality dataQuality, final IstSOSListener callback){
 		
@@ -879,7 +848,6 @@ public class Service implements IstSOSObject<Service>{
 		}, this.server.getRealm());
 		
 	}
-	
 	/**
 	 * Default method for updating data quality characteristics.
 	 * @param dataQuality
@@ -887,11 +855,10 @@ public class Service implements IstSOSObject<Service>{
 	public void updateDataQuality(DataQuality dataQuality){
 		this.updateDataQuality(dataQuality, null);
 	}
-	
 	/**
-	 * Update the selected data quality's characteristics (code, name, description). 
-	 * @param dataQuality
-	 * @param callback
+	 * Update a data quality's characteristics (code, name, description). 
+	 * @param dataQuality {@link DataQuality}
+	 * @param callback {@link IstSOSListener}
 	 */
 	public void updateDataQuality(DataQuality dataQuality, final IstSOSListener callback){
 		
@@ -937,19 +904,17 @@ public class Service implements IstSOSObject<Service>{
 		}, this.server.getRealm());
 		
 	}
-	
 	/**
-	 * Default method for removing data quality from server
+	 * Default method for removing data quality from service.
 	 * @param dataQuality
 	 */
 	public void removeDataQuality(DataQuality dataQuality){
 		this.removeDataQuality(dataQuality, null);
 	}
-	
 	/**
-	 * Remove data quality from service
-	 * @param dataQuality
-	 * @param callback
+	 * Remove data quality from service.
+	 * @param dataQuality {@link DataQuality}
+	 * @param callback {@link IstSOSListener}
 	 */
 	public void removeDataQuality(DataQuality dataQuality, final IstSOSListener callback){
 		
@@ -992,19 +957,15 @@ public class Service implements IstSOSObject<Service>{
 			}
 		}, this.server.getRealm());
 	}
-	
-	
-	
 	/**
 	 * Default method for loading observed properties from selected service.
 	 */
 	public void loadObservedProperties(){
 		this.loadObservedProperties();
 	}
-	
 	/**
 	 * Load observed properties from selected service.
-	 * @param callback
+	 * @param callback as {@link IstSOSListener}
 	 */
 	public void loadObservedProperties(final IstSOSListener callback){
 		
@@ -1046,29 +1007,24 @@ public class Service implements IstSOSObject<Service>{
 		}, this.server.getRealm());
 		
 	}
-	
-	
 	/**
-	 * Retrieve observed properties
-	 * @return an ArrayList of observed properties objects
+	 * Retrieve observed properties.
+	 * @return List of observed properties
 	 */
 	public ArrayList<ObservedProperty> getObservedProperties() {
 		return observedProperties;
 	}
-	
 	/**
 	 * Default method for registering observed property to service.
-	 * @param obs
+	 * @param obs - {@link ObservedProperty}
 	 */
 	public void registerObservedProperty(ObservedProperty obs){
 		this.registerObservedProperty(obs, null);
 	}
-	
-	
 	/**
-	 * Register observed property to service.
-	 * @param 
-	 * @param callback
+	 * Register new observed property to service.
+	 * @param observedProperty - {@link ObservedProperty}
+	 * @param callback - {@link IstSOSListener}
 	 */
 	public void registerObservedProperty(ObservedProperty observedProperty, final IstSOSListener callback){
 		
@@ -1108,21 +1064,17 @@ public class Service implements IstSOSObject<Service>{
 			}
 		}, this.server.getRealm());
 	}
-	
 	/**
-	 * Default method for updating selected Observed Property
-	 * @param observedProperty
+	 * Default method for updating selected Observed Property.
+	 * @param observedProperty - {@link ObservedProperty}
 	 */
 	public void updateObservedProperty(ObservedProperty observedProperty){
 		this.updateObservedProperty(observedProperty, null);
 	}
-	
-	
 	/**
-	 * Update Observed Property 
-	 * 
-	 * @param observedProperty
-	 * @param callback
+	 * Update observed property characteristics.
+	 * @param observedProperty - {@link ObservedProperty}
+	 * @param callback - {@link IstSOSListener}
 	 */
 	public void updateObservedProperty(ObservedProperty observedProperty, final IstSOSListener callback){
 		
@@ -1169,20 +1121,17 @@ public class Service implements IstSOSObject<Service>{
 		}, this.server.getRealm());
 		
 	}
-	
 	/**
 	 * Default method for removing observed property.
-	 * @param observedProperty
+	 * @param observedProperty - {@link ObservedProperty}
 	 */
 	public void removeObservedProperty(ObservedProperty observedProperty){
 		this.removeObservedProperty(observedProperty, null);
 	}
-	
-	
 	/**
 	 * Remove observed property from service.
-	 * @param observedProperty
-	 * @param callback
+	 * @param observedProperty - {@link ObservedProperty}
+	 * @param callback - {@link IstSOSListener}
 	 */
 	public void removeObservedProperty(ObservedProperty observedProperty, final IstSOSListener callback){
 		
@@ -1223,18 +1172,15 @@ public class Service implements IstSOSObject<Service>{
 			}
 		}, this.server.getRealm());
 	}
-	
-	
 	/**
 	 * Default method for loading units of measure from service.
 	 */
 	public void loadUnitsOfMeasure(){
 		this.loadUnitsOfMeasure(null);
 	}
-	
 	/**
 	 * Load units of measure from service.
-	 * @param callback
+	 * @param callback - {@link IstSOSListener}
 	 */
 	public void loadUnitsOfMeasure(final IstSOSListener callback){
 		
@@ -1276,27 +1222,24 @@ public class Service implements IstSOSObject<Service>{
 		}, this.server.getRealm());
 		
 	}
-	
 	/**
-	 * Retrieve units of measure as a HashMap
-	 * @return an ArrayList of units of measure
+	 * Retrieve units of measure of list from service.
+	 * @return List with units of measure
 	 */
 	public ArrayList<UnitOfMeasure> getUnitsOfMeasure() {
 		return uoms;
 	}
-	
 	/**
 	 * Default method for registering unit of measure to service
-	 * @param uom
+	 * @param uom - {@link UnitOfMeasure}
 	 */
 	public void registerUnitOfMeasure(UnitOfMeasure uom){
 		this.registerUnitOfMeasure(uom, null);
 	}
-	
 	/**
-	 * Register unit of measure to service
-	 * @param uom
-	 * @param callback
+	 * Register unit of measure to service.
+	 * @param uom - {@link UnitOfMeasure}
+	 * @param callback - {@link IstSOSListener}
 	 */
 	public void registerUnitOfMeasure(UnitOfMeasure uom, final IstSOSListener callback){
 		
@@ -1336,19 +1279,17 @@ public class Service implements IstSOSObject<Service>{
 			}
 		}, this.server.getRealm());
 	}
-	
 	/**
-	 * Default method for updating selected unit of measure
-	 * @param uom
+	 * Default method for updating selected unit of measure.
+	 * @param uom - {@link IstSOSListener}
 	 */
 	public void updateUnitOfMeasure(UnitOfMeasure uom){
 		this.updateUnitOfMeasure(uom, null);
 	}
-	
 	/**
-	 * Update selected unit of measure
-	 * @param uom
-	 * @param callback
+	 * Update selected unit of measure.
+	 * @param uom - {@link UnitOfMeasure}
+	 * @param callback - {@link IstSOSListener}
 	 */
 	public void updateUnitOfMeasure(UnitOfMeasure uom, final IstSOSListener callback){
 		
@@ -1395,7 +1336,6 @@ public class Service implements IstSOSObject<Service>{
 			}
 		}, this.server.getRealm());
 	}
-	
 	/**
 	 * Default method for removing unit of measure
 	 * @param uom
@@ -1403,11 +1343,10 @@ public class Service implements IstSOSObject<Service>{
 	public void removeUnitOfMeasure(UnitOfMeasure uom){
 		this.removeUnitOfMeasure(uom, null);
 	}
-	
 	/**
 	 * Remove unit of measure from service.
-	 * @param uom
-	 * @param callback
+	 * @param uom - {@link UnitOfMeasure}
+	 * @param callback - {@link IstSOSListener}
 	 */
 	public void removeUnitOfMeasure(UnitOfMeasure uom, final IstSOSListener callback){
 		
@@ -1449,18 +1388,15 @@ public class Service implements IstSOSObject<Service>{
 		}, this.server.getRealm());
 		
 	}
-	
-	
 	/**
 	 * Default method for loading procedures from service
 	 */
 	public void loadProcedures(){
 		this.loadProcedures(null);
 	}
-	
 	/**
-	 * Load procedures from service
-	 * @param callback
+	 * Load procedures from service.
+	 * @param callback - {@link IstSOSListener}
 	 */
 	public void loadProcedures(final IstSOSListener callback){
 		
@@ -1504,12 +1440,11 @@ public class Service implements IstSOSObject<Service>{
 	
 	/**
 	 * Retrieve a list of procedures
-	 * @return an ArrayList with procedure instances
+	 * @return List of procedures.
 	 */
 	public ArrayList<Procedure> getProcedures() {
 		return this.procedures;
 	}
-	
 	/**
 	 * Default method for registering procedure
 	 * @param procedure

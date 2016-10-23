@@ -8,13 +8,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * SamplingTime class.
- * <p> 
- * Handles begin and end positions for time interval in observations. 
- * Begin and End positions are created as Java Date type object
- * of the following format: yyyy-MM-dd'T'HH:mm:ssXX.
- * <p>
- * Supports conversion to/from JSON.
+ * Handles time interval for {@link Observation} using {@link Date} class
+ * with the following format: yyyy-MM-dd'T'HH:mm:ssXX.
  *
  */
 @SuppressWarnings("rawtypes")

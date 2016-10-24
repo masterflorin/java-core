@@ -1230,14 +1230,14 @@ public class Service implements IstSOSObject<Service>{
 		return uoms;
 	}
 	/**
-	 * Default method for registering unit of measure to service
+	 * Default method for registering a unit of measure to service
 	 * @param uom - {@link UnitOfMeasure}
 	 */
 	public void registerUnitOfMeasure(UnitOfMeasure uom){
 		this.registerUnitOfMeasure(uom, null);
 	}
 	/**
-	 * Register unit of measure to service.
+	 * Register a unit of measure to service.
 	 * @param uom - {@link UnitOfMeasure}
 	 * @param callback - {@link IstSOSListener}
 	 */
@@ -1280,14 +1280,14 @@ public class Service implements IstSOSObject<Service>{
 		}, this.server.getRealm());
 	}
 	/**
-	 * Default method for updating selected unit of measure.
+	 * Default method for updating a selected unit of measure.
 	 * @param uom - {@link IstSOSListener}
 	 */
 	public void updateUnitOfMeasure(UnitOfMeasure uom){
 		this.updateUnitOfMeasure(uom, null);
 	}
 	/**
-	 * Update selected unit of measure.
+	 * Update a selected unit of measure.
 	 * @param uom - {@link UnitOfMeasure}
 	 * @param callback - {@link IstSOSListener}
 	 */
@@ -1389,13 +1389,13 @@ public class Service implements IstSOSObject<Service>{
 		
 	}
 	/**
-	 * Default method for loading procedures from service
+	 * Default method for retrieve all existing procedures from service.
 	 */
 	public void loadProcedures(){
 		this.loadProcedures(null);
 	}
 	/**
-	 * Load procedures from service.
+	 * Retrieve all existing procedures from service.
 	 * @param callback - {@link IstSOSListener}
 	 */
 	public void loadProcedures(final IstSOSListener callback){
@@ -1437,7 +1437,6 @@ public class Service implements IstSOSObject<Service>{
 			}
 		}, this.server.getRealm());
 	}
-	
 	/**
 	 * Retrieve a list of procedures
 	 * @return List of procedures.
@@ -1446,17 +1445,15 @@ public class Service implements IstSOSObject<Service>{
 		return this.procedures;
 	}
 	/**
-	 * Default method for registering procedure
+	 * Default method for registering a procedure
 	 * @param procedure
 	 */
 	public void registerProcedure(Procedure procedure){
 		this.registerProcedure(procedure, null);
 	}
-	
-	
 	/**
-	 * Retrieve procedure based by name from service
-	 * @param procedureName
+	 * Retrieve a procedure from service based on its name.
+	 * @param procedureName - String
 	 */
 	public void getProcedure(String procedureName, final IstSOSListener callback){
 		
@@ -1497,11 +1494,10 @@ public class Service implements IstSOSObject<Service>{
 			}
 		}, this.server.getRealm());
 	}
-	
 	/**
 	 * Register procedure to selected service
-	 * @param procedure
-	 * @param callback
+	 * @param procedure - {@link Procedure}
+	 * @param callback - {@link IstSOSListener}
 	 */
 	public void registerProcedure(Procedure procedure, final IstSOSListener callback){
 		
@@ -1541,19 +1537,17 @@ public class Service implements IstSOSObject<Service>{
 			}
 		}, this.server.getRealm());
 	}
-	
 	/**
 	 * Default method for updating procedure.
-	 * @param procedure
+	 * @param procedure - {@link Procedure}
 	 */
 	public void updateProcedure(Procedure procedure){
 		this.updateProcedure(procedure, null);
 	}
-	
 	/**
 	 * Update selected procedure
-	 * @param procedure
-	 * @param callback
+	 * @param procedure - {@link Procedure}
+	 * @param callback - {@link IstSOSListener}
 	 */
 	public void updateProcedure(Procedure procedure, final IstSOSListener callback){
 		
@@ -1596,17 +1590,15 @@ public class Service implements IstSOSObject<Service>{
 			}
 		}, this.server.getRealm());
 	}
-	
 	/**
-	 * Default method for loading virtual procedures from service
+	 * Default method for loading virtual procedures from service.
 	 */
 	public void loadVirtualProcedures(){
 		this.loadVirtualProcedures(null);
 	}
-	
 	/**
-	 * Load virtual procedures from service
-	 * @param callback
+	 * Retrieve all existing virtual procedures from service.
+	 * @param callback - {@link IstSOSListener}
 	 */
 	public void loadVirtualProcedures(final IstSOSListener callback){
 		
@@ -1647,23 +1639,24 @@ public class Service implements IstSOSObject<Service>{
 			}
 		}, this.server.getRealm());
 	}
-	
+	/**
+	 * Retrieve a list of virtual procedures.
+	 * @return List
+	 */
 	public ArrayList<VirtualProcedure> getVirtualProcedures() {
 		return virtualProcedures;
 	}
-	
 	/**
 	 * Default method for loading virtual procedure code
-	 * @param virtualProcedure
+	 * @param virtualProcedure - {@link VirtualProcedure}
 	 */
 	public void loadVirtualProcedureCode(VirtualProcedure virtualProcedure){
 		this.loadVirtualProcedureCode(virtualProcedure, null);
 	}
-	
 	/**
-	 * Load virtual procedure code
-	 * @param virtualProcedure
-	 * @param callback
+	 * Load virtual procedure code from service.
+	 * @param virtualProcedure - {@link VirtualProcedure}
+	 * @param callback - {@link IstSOSListener}
 	 */
 	public void loadVirtualProcedureCode(VirtualProcedure virtualProcedure, final IstSOSListener callback){
 		
@@ -1704,19 +1697,17 @@ public class Service implements IstSOSObject<Service>{
 			}
 		}, this.server.getRealm());
 	}
-	
 	/**
-	 * Default method for registering virtual procedure code
-	 * @param virtualProcedure
+	 * Default method for registering virtual procedure code.
+	 * @param virtualProcedure - {@link VirtualProcedure}
 	 */
 	public void registerVirtualProcedureCode(VirtualProcedure virtualProcedure){
 		this.registerVirtualProcedureCode(virtualProcedure, null);
 	}
-	
 	/**
-	 * Register virtual procedure code
-	 * @param virtualProcedure
-	 * @param callback
+	 * Register virtual procedure code.
+	 * @param virtualProcedure - {@link VirtualProcedure}
+	 * @param callback - {@link IstSOSListener}
 	 */
 	public void registerVirtualProcedureCode(VirtualProcedure virtualProcedure, final IstSOSListener callback){
 		
@@ -1757,19 +1748,17 @@ public class Service implements IstSOSObject<Service>{
 			}
 		}, this.server.getRealm());
 	}
-	
 	/**
-	 * Default method for updating virtual procedure code
-	 * @param virtualProcedure
+	 * Default method for updating an existing virtual procedure code in the service.
+	 * @param virtualProcedure - {@link VirtualProcedure}
 	 */
 	public void updateVirtualProcedureCode(VirtualProcedure virtualProcedure){
 		this.updateVirtualProcedureCode(virtualProcedure, null);
 	}
-	
 	/**
-	 * Update virtual procedure code
-	 * @param virtualProcedure
-	 * @param callback
+	 * Update an existing virtual procedure code in the service.
+	 * @param virtualProcedure - {@link VirtualProcedure}
+	 * @param callback - {@link IstSOSListener}
 	 */
 	public void updateVirtualProcedureCode(VirtualProcedure virtualProcedure, final IstSOSListener callback){
 		
@@ -1815,19 +1804,17 @@ public class Service implements IstSOSObject<Service>{
 			}
 		}, this.server.getRealm());
 	}
-	
 	/**
-	 * Default method for removing virtual procedure code
-	 * @param virtualProcedure
+	 * Default method for removing virtual procedure code from service.
+	 * @param virtualProcedure - {@link VirtualProcedure}
 	 */
 	public void removeVirtualProcedureCode(VirtualProcedure virtualProcedure){
 		this.removeVirtualProcedureCode(virtualProcedure, null);
 	}
-	
 	/**
-	 * Remove virtual procedure code
-	 * @param virtualProcedure
-	 * @param callback
+	 * Remove virtual procedure code from service.
+	 * @param virtualProcedure - {@link VirtualProcedure}
+	 * @param callback - {@link IstSOSListener}
 	 */
 	public void removeVirtualProcedureCode(VirtualProcedure virtualProcedure, final IstSOSListener callback){
 		
@@ -1870,7 +1857,6 @@ public class Service implements IstSOSObject<Service>{
 			}
 		}, this.server.getRealm());
 	}
-	
 	/**
 	 * Default method for loading virtual procedure rating curve
 	 * @param virtualProcedure
@@ -1878,7 +1864,11 @@ public class Service implements IstSOSObject<Service>{
 	public void loadVirtualProcedureRatingCurve(VirtualProcedure virtualProcedure){
 		this.loadVirtualProcedureRatingCurve(virtualProcedure, null);
 	}
-	
+	/**
+	 * Retrieve rating curve from the selected virtual procedure from the service.
+	 * @param virtualProcedure - {@link VirtualProcedure}
+	 * @param callback - {@link IstSOSListener}
+	 */
 	public void loadVirtualProcedureRatingCurve(VirtualProcedure virtualProcedure, final IstSOSListener callback){
 		
 		Map<String, String> urlKeyMap = new HashMap<String, String>();
@@ -1917,19 +1907,17 @@ public class Service implements IstSOSObject<Service>{
 			}
 		}, this.server.getRealm());
 	}
-	
 	/**
-	 * Default method for registering rating curve
-	 * @param virtualProcedure
+	 * Default method for registering rating curve for the input virtual procedure.
+	 * @param virtualProcedure - {@link VirtualProcedure}
 	 */
 	public void registerVirtualProcedureRatingCurve(VirtualProcedure virtualProcedure){
 		this.registerVirtualProcedureRatingCurve(virtualProcedure, null);
 	}
-	
 	/**
-	 * Register rating curve for virtual procedure
-	 * @param virtualProcedure
-	 * @param callback
+	 * Register rating curve for the input virtual procedure.
+	 * @param virtualProcedure - {@link VirtualProcedure}
+	 * @param callback - {@link IstSOSListener}
 	 */
 	public void registerVirtualProcedureRatingCurve(VirtualProcedure virtualProcedure, final IstSOSListener callback){
 		
@@ -1970,20 +1958,18 @@ public class Service implements IstSOSObject<Service>{
 			}
 		}, this.server.getRealm());
 	}
-	
 	/**
-	 * Default method for removing rating curve
+	 * Default method for removing rating curve from the selected virtual procedure.
 	 * 
-	 * @param virtualProcedure
+	 * @param virtualProcedure - {@link VirtualProcedure}
 	 */
 	public void removeVirtualProcedureRatingCurve(VirtualProcedure virtualProcedure){
 		this.removeVirtualProcedureCode(virtualProcedure, null);
 	}
-	
 	/**
-	 * Remove rating curve from virtual procedure
-	 * @param virtualProcedure
-	 * @param callback
+	 * Remove rating curve from the selected virtual procedure.
+	 * @param virtualProcedure - {@link VirtualProcedure}
+	 * @param callback - {@link IstSOSListener}
 	 */
 	public void removeVirtualProcedureRatingCurve(VirtualProcedure virtualProcedure, final IstSOSListener callback){
 		
@@ -2026,8 +2012,6 @@ public class Service implements IstSOSObject<Service>{
 			}
 		}, this.server.getRealm());
 	}
-
-	
 	/**
 	 * Default method for loading offerings
 	 */
@@ -2037,7 +2021,7 @@ public class Service implements IstSOSObject<Service>{
 	
 	/**
 	 * Load offerings from service.
-	 * @param callback
+	 * @param callback - {@link IstSOSListener}
 	 */
 	public void loadOfferings(final IstSOSListener callback){
 		
@@ -2082,27 +2066,24 @@ public class Service implements IstSOSObject<Service>{
 			}
 		}, this.server.getRealm());
 	}
-	
 	/**
-	 * Retrieve a list of offerings
-	 * @return an ArrayList of offerings, with offering name as key and offering object as value
+	 * Retrieve a list of offerings.
+	 * @return List of {@link Offering}
 	 */
 	public ArrayList<Offering> getOfferings() {
 		return this.offerings;
 	}
-	
 	/**
 	 * Default method for registering offering to service.
-	 * @param offering
+	 * @param offering - {@link Offering}
 	 */
 	public void registerOffering(Offering offering){
 		this.registerOffering(offering, null);
 	}
-	
 	/**
-	 * Register offering to service
-	 * @param offering
-	 * @param callback
+	 * Register offering to service.
+	 * @param offering - {@link Offering}
+	 * @param callback - {@link IstSOSListener}
 	 */
 	public void registerOffering(Offering offering, final IstSOSListener callback){
 		
@@ -2143,19 +2124,17 @@ public class Service implements IstSOSObject<Service>{
 		}, this.server.getRealm());
 		
 	}
-	
 	/**
-	 * Default method for updating offering
-	 * @param offering
+	 * Default method for updating a selected offering.
+	 * @param offering - {@link Offering}
 	 */
 	public void updateOffering(Offering offering){
 		this.updateOffering(offering, null);
 	}
-	
 	/**
-	 * Update selected offering
-	 * @param offering
-	 * @param callback
+	 * Update the selected offering.
+	 * @param offering - {@link Offering}
+	 * @param callback - {@link IstSOSListener}
 	 */
 	public void updateOffering(Offering offering, final IstSOSListener callback){
 		
@@ -2199,19 +2178,17 @@ public class Service implements IstSOSObject<Service>{
 			}
 		}, this.server.getRealm());
 	}
-	
 	/**
-	 * Default method for removing offering
-	 * @param offering
+	 * Default method to remove an existing offering from service.
+	 * @param offering - {@link Offering}
 	 */
 	public void removeOffering(Offering offering){
 		this.removeOffering(offering, null);
 	}
-	
 	/**
-	 * Remove offering from service
-	 * @param offering
-	 * @param callback
+	 * Remove an existing offering from service.
+	 * @param offering - {@link Offering}
+	 * @param callback - {@link IstSOSListener}
 	 */
 	public void removeOffering(Offering offering, final IstSOSListener callback){
 		

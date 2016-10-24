@@ -6,18 +6,24 @@ import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Handles result element of an observation.
+ * The Result class represents the DataArray of the Observation.
  *
  */
 public class Result {
 	
 	@SerializedName ("DataArray")
 	private DataArray dataArray;
-
+	/**
+	 * 
+	 * @return {@link DataArray} object
+	 */
 	public DataArray getDataArray() {
 		return dataArray;
 	}
-
+	/**
+	 * 
+	 * @param dataArray - {@link DataArray}
+	 */
 	public void setDataArray(DataArray dataArray) {
 		this.dataArray = dataArray;
 	}

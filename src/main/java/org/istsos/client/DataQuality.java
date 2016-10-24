@@ -6,7 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * DataQuality class. Supports conversion both to/from JSON.
+ * DataQuality class.
  *
  */
 public class DataQuality implements IstSOSObject<DataQuality> {

@@ -15,7 +15,7 @@ import org.istsos.client.procedure.Classification;
 import org.istsos.client.procedure.Location;
 
 /**
- * Procedure class.
+ * Procedure class represents all features of a procedure.
  *
  */
 public class Procedure implements IstSOSObject<Procedure> {
@@ -204,13 +204,12 @@ public class Procedure implements IstSOSObject<Procedure> {
 		return gson.toJsonTree(this,Procedure.class).getAsJsonObject();
 	}
 
-
 	/**
 	 *
 	 * Generate a Procedure from json objerct
 	 *
-	 * @param json
-	 * @return Procedure
+	 * @param json - {@link JsonObject}
+	 * @return a procedure
      */
 	static Procedure fromJson(JsonObject json){
 

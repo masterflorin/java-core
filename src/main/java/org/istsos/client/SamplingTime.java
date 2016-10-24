@@ -8,9 +8,12 @@ import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Handles time interval for {@link Observation} using {@link Date} class
- * with the following format: yyyy-MM-dd'T'HH:mm:ssXX.
- *
+ * The Sampling Time class represents time interval for {@link Observation} using
+ * {@link Date} type with the following format: 
+ * <blockquote><pre>
+ * 		yyyy-MM-dd'T'HH:mm:ssXX.
+ * </pre></blockquote>
+ * 
  */
 @SuppressWarnings("rawtypes")
 public class SamplingTime implements IstSOSObject{
@@ -20,7 +23,12 @@ public class SamplingTime implements IstSOSObject{
 	private Date beginPosition;
 	@SerializedName("endposition")
 	private Date endPosition;
-
+	/**
+	 * 
+	 * @param duration - String
+	 * @param beginPosition - {@link Date}
+	 * @param endPosition - {@link Date}
+	 */
     public SamplingTime(String duration, Date beginPosition, Date endPosition) {
         this.duration = duration;
         this.beginPosition = beginPosition;
@@ -29,27 +37,45 @@ public class SamplingTime implements IstSOSObject{
 
     public SamplingTime() {
     }
-
+    /**
+     * 
+     * @return string with the duration
+     */
     public String getDuration() {
 		return duration;
 	}
-
+    /**
+     * 
+     * @param duration - String
+     */
 	public void setDuration(String duration) {
 		this.duration = duration;
 	}
-
+	/**
+	 * 
+	 * @return beginning date of the interval 
+	 */
 	public Date getBeginPosition() {
 		return beginPosition;
 	}
-
+	/**
+	 * 
+	 * @param beginPosition - {@link Date}
+	 */
 	public void setBeginPosition(Date beginPosition) {
 		this.beginPosition = beginPosition;
 	}
-
+	/**
+	 * 
+	 * @return ending date of the interval
+	 */
 	public Date getEndPosition() {
 		return endPosition;
 	}
-
+	/**
+	 * 
+	 * @param endPosition
+	 */
 	public void setEndPosition(Date endPosition) {
 		this.endPosition = endPosition;
 	}

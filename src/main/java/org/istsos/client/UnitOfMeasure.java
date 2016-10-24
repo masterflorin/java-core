@@ -12,8 +12,6 @@ import com.google.gson.reflect.TypeToken;
 /**
  * UnitOfMeasure class. Holds data such as name, description, and list of procedures to which it is
  * registered.
- * <p>
- * Supports conversion to/from JSON.
  *
  */
 @SuppressWarnings("rawtypes")

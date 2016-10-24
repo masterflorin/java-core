@@ -8,8 +8,7 @@ import com.google.gson.annotations.SerializedName;
 import org.istsos.client.observation.Result;
 
 /**
- * Class for storing observation information such as samplingTime, name,
- * procedure, result.
+ * The Observation class represents data such as result, sampling time, procedure.
  *
  */
 public class Observation implements IstSOSObject<Observation>{
@@ -23,43 +22,59 @@ public class Observation implements IstSOSObject<Observation>{
 	@SerializedName ("result")
 	private Result result;
 	
-	
+	/**
+	 * 
+	 * @return sampling time - {@link SamplingTime}
+	 */
 	public SamplingTime getSamplingTime() {
 		return samplingTime;
 	}
-
-
+	/**
+	 * 
+	 * @param samplingTime - {@link SamplingTime}
+	 */
 	public void setSamplingTime(SamplingTime samplingTime) {
 		this.samplingTime = samplingTime;
 	}
-
-
+	/**
+	 * 
+	 * @return a string
+	 */
 	public String getName() {
 		return name;
 	}
-
-
+	/**
+	 * 
+	 * @param name - String
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
-
-
+	/**
+	 * 
+	 * @return name of procedure as String
+	 */
 	public String getProcedure() {
 		return procedure;
 	}
-
-
+	/**
+	 * 
+	 * @param procedure - String
+	 */
 	public void setProcedure(String procedure) {
 		this.procedure = procedure;
 	}
-
-	
-
+	/**
+	 * 
+	 * @return observation {@link Result}
+	 */
 	public Result getResult() {
 		return result;
 	}
-
-
+	/**
+	 * 
+	 * @param result - {@link Result}
+	 */
 	public void setResult(Result result) {
 		this.result = result;
 	}

@@ -8,7 +8,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Handles observation values.
+ * The DataArray represents the values of the observation.
  *
  */
 public class DataArray {
@@ -16,11 +16,17 @@ public class DataArray {
 	@SerializedName ("values")
 	private ArrayList<String[]> values = new ArrayList<String[]>();
 	
-	
+	/**
+	 * 
+	 * @return list of String array
+	 */
 	public ArrayList<String[]> getValues() {
 		return values;
 	}
-
+	/**
+	 * 
+	 * @param values - {@link ArrayList}
+	 */
 	public void setValues(ArrayList<String[]> values) {
 		this.values = values;
 	}
